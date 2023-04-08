@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+
+  # Definiert den "server" Service
+  provider:
+    image: olikis/pythonprovider
+    build: provider/                   # Pfad zum Build-Verzeichnis des provider
+    command: python ./server.py      # Ausführungsbefehl für das Server-Skript
+    ports:
+      - 1234:1234                    # Bindet den Container-Port 1234 an den Host-Port 1234
+
+  # Definiert den "client" Service
+  consumer:
+    image: olikis/nodeconsumer
+    build: consumer/                   # Pfad zum Build-Verzeichnis des consumer
+    tty: true                        # Stellt eine tty-Verbindung bereit
+    ports:
+      - 5000:5000                    # Bindet den Container-Port 5000 an den Host-Port 5000
+    depends_on:
+      - provider                        # Gibt an, dass der "client"-Service vom "server"-Service abhängt

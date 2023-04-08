@@ -1,0 +1,12 @@
+{
+  "name": "docker-joke-app",
+  "version": "1.0.0",
+  "description": "A simple joke application using Docker",
+  "scripts": {
+    "start": "npm run"
+  },
+  "author": "Olivier Kistler",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
